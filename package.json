@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "node prisma/seed.js",
+    "db:studio": "prisma studio",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +24,15 @@
   "bugs": {
     "url": "https://github.com/andycarrasco804-png/TestNodeJS/issues"
   },
-  "homepage": "https://github.com/andycarrasco804-png/TestNodeJS#readme"
+  "homepage": "https://github.com/andycarrasco804-png/TestNodeJS#readme",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "@prisma/adapter-neon": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "prisma": "^7.8.0"
+  }
 }

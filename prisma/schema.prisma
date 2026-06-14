@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Pais {
+  id        Int       @id @default(autoincrement())
+  nombre    String    @db.VarChar(100)
+  codigoIso String?   @map("codigo_iso") @db.VarChar(3)
+  activo    Boolean   @default(true)
+  clientes  Cliente[]
+
+  @@map("paises")
+}
+
+model Cliente {
+  id           Int      @id @default(autoincrement())
+  nombre       String   @db.VarChar(100)
+  email        String   @unique @db.VarChar(150)
+  telefono     String?  @db.VarChar(20)
+  direccion    String?  @db.Text
+  ciudad       String?  @db.VarChar(100)
+  paisId       Int?     @map("pais_id")
+  codigoPostal String?  @map("codigo_postal") @db.VarChar(10)
+  estado       String   @default("activo") @db.VarChar(20)
+  fechaCreacion DateTime @default(now()) @map("fecha_creacion")
+  pais         Pais?    @relation(fields: [paisId], references: [id])
+
+  @@map("clientes")
+}
