@@ -18,7 +18,6 @@ async function main() {
     ],
     skipDuplicates: true,
   });
-  console.log('✅ Países insertados');
 }
 
 main()
